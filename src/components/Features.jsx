@@ -19,7 +19,12 @@ import {
   FiStar, 
   FiMessageCircle,
   FiArrowLeft,
-  FiArrowRight 
+  FiArrowRight,
+  FiShield,
+  FiLock,
+  FiSmile,
+  FiGlobe,
+  FiClock
 } from "react-icons/fi";
 import { useState, useEffect, useRef } from "react";
 
@@ -166,16 +171,58 @@ const FeaturesSlider = () => {
     {
       icon: FiStar,
       title: "Recommended Matches",
-      description: "Smart suggestions based on your interests and preferences.",
+      description: "Smart matching algorithms that help you find like-minded people.",
       color: "orange.400",
       stats: "AI Powered",
     },
     {
       icon: FiMessageCircle,
-      title: "Chat & Connect",
-      description: "Start conversations and build meaningful connections.",
+      title: "Real-Time Chatting",
+      description: "Smooth and fast messaging with instant delivery for uninterrupted conversations.",
       color: "teal.400",
       stats: "Instant",
+    },
+    {
+      icon: FiLock,
+      title: "User Privacy First",
+      description: "End-to-end encryption and strong privacy controls for secure communication.",
+      color: "cyan.400",
+      stats: "100% Secure",
+    },
+    {
+      icon: FiShield,
+      title: "Safe Community",
+      description: "Active moderation and AI-powered systems for respectful interactions.",
+      color: "red.400",
+      stats: "Moderated",
+    },
+    {
+      icon: FiSmile,
+      title: "Friendly Interface",
+      description: "Intuitive design that's easy to navigate for users of all ages.",
+      color: "yellow.400",
+      stats: "4.8/5 Rating",
+    },
+    {
+      icon: FiGlobe,
+      title: "Global Connectivity",
+      description: "Availability with reliable servers across multiple continents 24/7.",
+      color: "blue.500",
+      stats: "Worldwide",
+    },
+    {
+      icon: FiClock,
+      title: "Instant Responses",
+      description: "Quick reply suggestions and smart notifications for better engagement.",
+      color: "purple.500",
+      stats: "< 1s reply",
+    },
+    {
+      icon: FiStar,
+      title: "Premium Experience",
+      description: "Exclusive features for enhanced chatting experience and priority support.",
+      color: "pink.500",
+      stats: "Premium",
     },
   ];
 
