@@ -10,50 +10,82 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import {
+  MoonIcon,
+  SunIcon,
+  HamburgerIcon,
+  CloseIcon,
+} from "@chakra-ui/icons";
+
+import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle, onClose } = useDisclosure();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const bg = useColorModeValue("white", "gray.900");
   const textColor = useColorModeValue("black", "white");
 
+  // Smart scroll handler (works across pages)
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      onClose(); // close menu after click
+    if (location.pathname !== "/") {
+      navigate("/", { state: { sectionId: id } });
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    onClose();
+  };
+
+  // Handle logo click - always go to home page
+  const handleLogoClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      // If already on home page, scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    onClose();
   };
 
   return (
     <Box position="sticky" top="0" zIndex="1000">
-      {/* 🔥 Navbar */}
+      {/* Navbar */}
       <Flex
-        px={4}
-        py={2}
+        px={{ base: 4, md: 8 }}
+        py={3}
         justify="space-between"
         align="center"
         bg={bg}
         color={textColor}
         shadow="sm"
       >
-        {/* Logo */}
-         <Flex align="center" gap={2}>
-        <Avatar
-          size="md"
-          src="/images/logo.jpeg"
-          name="Delbaram Logo"
-          border="2px solid pink.400"
-           boxSize="84px"
-          borderColor="pink.400"
-          ml={12}
-          boxShadow="lg"
-        />
-      </Flex>
+        {/*  Logo - Clickable */}
+        <Flex
+          align="center"
+          gap={2}
+          onClick={handleLogoClick}
+          cursor="pointer"
+          _hover={{ opacity: 0.8 }}
+          transition="opacity 0.2s"
+        >
+          <Avatar
+            size="md"
+            src="/images/logo.jpeg"
+            name="Delbaram Logo"
+            border="2px solid pink"
+            boxSize="80px"
+            ml={{ base: 0, md: 6 }}
+            boxShadow="lg"
+          />
+        </Flex>
 
-        {/* 🔥 Desktop Menu */}
+        {/* Desktop Menu */}
         <Flex gap={4} align="center" display={{ base: "none", md: "flex" }}>
           <Button variant="ghost" onClick={() => scrollToSection("home")}>
             Home
@@ -63,18 +95,20 @@ const Navbar = () => {
             Features
           </Button>
 
-          {/* 🌙 Toggle */}
+          {/* Theme Toggle */}
           <IconButton
+            aria-label="Toggle theme"
             icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             onClick={toggleColorMode}
+            variant="ghost"
           />
         </Flex>
 
-        {/* 🔥 Mobile Right Side */}
+        {/* Mobile Right Side */}
         <Flex align="center" gap={2} display={{ base: "flex", md: "none" }}>
-          
-          {/* 🌙 ALWAYS VISIBLE */}
+          {/* Theme Toggle */}
           <IconButton
+            aria-label="Toggle theme"
             icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             onClick={toggleColorMode}
             variant="ghost"
@@ -82,15 +116,16 @@ const Navbar = () => {
 
           {/* ☰ Hamburger */}
           <IconButton
+            aria-label="Toggle menu"
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             onClick={onToggle}
             variant="ghost"
-             size="lg" 
+            size="lg"
           />
         </Flex>
       </Flex>
 
-      {/* 🔥 Mobile Menu */}
+      {/* Mobile Menu */}
       {isOpen && (
         <VStack
           bg={bg}

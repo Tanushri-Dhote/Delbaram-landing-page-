@@ -7,6 +7,7 @@ import {
   useColorModeValue,
   Avatar,
   Flex,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 const CTA = () => {
@@ -19,15 +20,17 @@ const CTA = () => {
   const buttonColor = useColorModeValue("pink.500", "pink.300");
   const textColor = useColorModeValue("white", "gray.200");
   const hoverBg = useColorModeValue("gray.100", "gray.700");
+  const statBg = useColorModeValue("whiteAlpha.200", "blackAlpha.300");
 
   return (
     <Box
-      py={{ base: 6, md: 10 }}
-      px={{ base: 4, md: 8 }}
+      py={{ base: 8, md: 12, lg: 16 }}
+      px={{ base: 4, sm: 6, md: 8 }}
       bgGradient={bgGradient}
-      borderRadius="2xl"
-      mx={4}
-      my={10}
+      borderRadius={{ base: "xl", md: "2xl" }}
+      mx={{ base: 3, sm: 4, md: 6, lg: 8 }}
+      my={{ base: 8, md: 12 }}
+      boxShadow="2xl"
       sx={{
         animation: "fadeInScale 0.8s ease-out",
         "@keyframes fadeInScale": {
@@ -37,18 +40,18 @@ const CTA = () => {
       }}
     >
       <Flex
-        direction={{ base: "column", md: "row" }}
+        direction={{ base: "column", lg: "row" }}
         align="center"
         justify="space-between"
-        maxW="1000px"
+        maxW="1200px"
         mx="auto"
-        gap={10}
+        gap={{ base: 8, md: 10, lg: 16 }}
       >
         {/* LEFT: Avatar Cluster */}
         <Box
           position="relative"
-          w={{ base: "240px", md: "340px" }}
-          h={{ base: "240px", md: "280px" }}
+          w={{ base: "260px", sm: "300px", md: "340px", lg: "380px" }}
+          h={{ base: "260px", sm: "300px", md: "340px", lg: "380px" }}
           sx={{
             animation: "floatContainer 4s ease-in-out infinite",
             "@keyframes floatContainer": {
@@ -61,12 +64,12 @@ const CTA = () => {
           {/* BIG CENTER AVATAR */}
           <Avatar
             src="/images/logo.jpeg"
-            size="2xl"
+            size={{ base: "xl", sm: "2xl", lg: "3xl" }}
             position="absolute"
             top="50%"
             left="50%"
             transform="translate(-50%, -50%)"
-            border="5px solid white"
+            border="4px solid white"
             boxShadow="2xl"
             zIndex={2}
             sx={{
@@ -83,11 +86,11 @@ const CTA = () => {
           <Avatar
             src="/images/sticker4.png"
             position="absolute"
-            boxSize={{ base: "55px", md: "70px" }}
-            top={{ base: "-5px", md: "0" }}
+            boxSize={{ base: "50px", sm: "60px", md: "70px", lg: "80px" }}
+            top={{ base: "-5px", sm: "0", md: "5px" }}
             left="50%"
             transform="translateX(-50%)"
-            border="4px solid white"
+            border="3px solid white"
             sx={{
               animation: "float1 5s ease-in-out infinite",
               "@keyframes float1": {
@@ -102,10 +105,10 @@ const CTA = () => {
           <Avatar
             src="/images/sticker5.png"
             position="absolute"
-            boxSize={{ base: "70px", md: "90px" }}
-            top={{ base: "10%", md: "20%" }}
-            left={{ base: "-5px", md: "0" }}
-            border="4px solid white"
+            boxSize={{ base: "60px", sm: "75px", md: "90px", lg: "100px" }}
+            top={{ base: "15%", sm: "18%", md: "20%" }}
+            left={{ base: "-10px", sm: "-5px", md: "0" }}
+            border="3px solid white"
             sx={{
               animation: "float2 4.5s ease-in-out infinite 0.3s",
               "@keyframes float2": {
@@ -121,10 +124,10 @@ const CTA = () => {
           <Avatar
             src="/images/sticker2.png"
             position="absolute"
-            boxSize={{ base: "70px", md: "90px" }}
-            top={{ base: "10%", md: "20%" }}
-            right={{ base: "-5px", md: "0" }}
-            border="4px solid white"
+            boxSize={{ base: "60px", sm: "75px", md: "90px", lg: "100px" }}
+            top={{ base: "15%", sm: "18%", md: "20%" }}
+            right={{ base: "-10px", sm: "-5px", md: "0" }}
+            border="3px solid white"
             sx={{
               animation: "float3 5s ease-in-out infinite 0.5s",
               "@keyframes float3": {
@@ -140,10 +143,10 @@ const CTA = () => {
           <Avatar
             src="/images/sticker3.png"
             position="absolute"
-            boxSize={{ base: "70px", md: "90px" }}
-            bottom={{ base: "-5px", md: "0" }}
-            left={{ base: "5%", md: "10%" }}
-            border="4px solid white"
+            boxSize={{ base: "60px", sm: "75px", md: "90px", lg: "100px" }}
+            bottom={{ base: "5%", sm: "3%", md: "0" }}
+            left={{ base: "5%", sm: "8%", md: "10%" }}
+            border="3px solid white"
             sx={{
               animation: "float4 4.8s ease-in-out infinite 0.2s",
               "@keyframes float4": {
@@ -158,10 +161,10 @@ const CTA = () => {
           <Avatar
             src="/images/sticker1.png"
             position="absolute"
-            boxSize={{ base: "70px", md: "90px" }}
-            bottom={{ base: "-5px", md: "0" }}
-            right={{ base: "5%", md: "10%" }}
-            border="4px solid white"
+            boxSize={{ base: "60px", sm: "75px", md: "90px", lg: "100px" }}
+            bottom={{ base: "5%", sm: "3%", md: "0" }}
+            right={{ base: "5%", sm: "8%", md: "10%" }}
+            border="3px solid white"
             sx={{
               animation: "float5 5.2s ease-in-out infinite 0.7s",
               "@keyframes float5": {
@@ -175,25 +178,20 @@ const CTA = () => {
 
         {/* RIGHT: Content */}
         <VStack
-          align={{ base: "center", md: "flex-start" }}
-          textAlign={{ base: "center", md: "left" }}
-          spacing={5}
+          align={{ base: "center", lg: "flex-start" }}
+          textAlign={{ base: "center", lg: "left" }}
+          spacing={{ base: 5, md: 6 }}
           flex={1}
-          ml={{ base: 0, md: 14 }}
-          sx={{
-            animation: "slideInRight 0.8s ease-out",
-            "@keyframes slideInRight": {
-              "0%": { opacity: 0, transform: "translateX(30px)" },
-              "100%": { opacity: 1, transform: "translateX(0)" },
-            },
-          }}
+          maxW={{ base: "100%", lg: "600px" }}
+          px={{ base: 2, sm: 4 }}
         >
           {/* Heading */}
           <Heading
             color={textColor}
-            fontSize={{ base: "2xl", md: "3xl" }}
+            fontSize={{ base: "28px", sm: "32px", md: "36px", lg: "42px" }}
             fontWeight="extrabold"
-            lineHeight="short"
+            lineHeight="1.2"
+            letterSpacing="tight"
             sx={{
               animation: "fadeInUp 0.6s ease-out 0.3s both",
               "@keyframes fadeInUp": {
@@ -208,37 +206,38 @@ const CTA = () => {
           {/* Subtitle */}
           <Text
             color={textColor}
-            opacity={0.85}
-            fontSize={{ base: "sm", md: "md" }}
-            maxW="400px"
+            opacity={0.9}
+            fontSize={{ base: "16px", sm: "17px", md: "18px" }}
+            lineHeight="1.6"
+            maxW="500px"
             sx={{
               animation: "fadeInUp 0.6s ease-out 0.5s both",
             }}
           >
-            Connecting people, sparking conversations, and building real relationships in a smarter way.
+            Connecting people, sparking conversations, and building real relationships in a smarter way. Join thousands of happy users finding their perfect matches every day.
           </Text>
 
-          {/* Stats - upgraded */}
-          <Flex
-            gap={{ base: 4, md: 6 }}
-            wrap="wrap"
-            justify={{ base: "center", md: "flex-start" }}
-            ml={{ base: 0, md: 14 }}
+          {/* Stats - Responsive Grid */}
+          <SimpleGrid 
+            columns={{ base: 3 }} 
+            spacing={{ base: 2, sm: 4, md: 6 }}
+            width="100%"
+            maxW="500px"
+            py={{ base: 2, md: 4 }}
           >
             {[
-              { value: "600+", label: "Connect" },
-              { value: "50+", label: "Chat" },
-              { value: "1k+", label: "Followers" },
+              { value: "10K+", label: "Active Users" },
+              { value: "50K+", label: "Daily Chats" },
+              { value: "5K+", label: "Success Stories" },
             ].map((item, i) => (
               <Box
                 key={i}
-                px={5}
-                py={3}
-                bg="whiteAlpha.200"
+                px={{ base: 2, sm: 3, md: 4 }}
+                py={{ base: 2, sm: 3 }}
+                bg={statBg}
                 borderRadius="lg"
                 backdropFilter="blur(10px)"
                 textAlign="center"
-                minW="80px"
                 sx={{
                   animation: `fadeInScale 0.5s ease-out ${0.7 + i * 0.15}s both`,
                   "@keyframes fadeInScale": {
@@ -247,37 +246,48 @@ const CTA = () => {
                   },
                   transition: "all 0.3s ease",
                   _hover: {
-                    transform: "translateY(-8px) scale(1.05)",
+                    transform: { md: "translateY(-6px) scale(1.02)" },
                     bg: "whiteAlpha.300",
-                    boxShadow: "0 10px 25px -5px rgba(0,0,0,0.3)",
+                    boxShadow: "lg",
                   },
                 }}
               >
                 <Text
                   color={textColor}
-                  fontSize={{ base: "xl", md: "2xl" }}
+                  fontSize={{ base: "20px", sm: "22px", md: "24px", lg: "28px" }}
                   fontWeight="bold"
+                  lineHeight="1.2"
                 >
                   {item.value}
                 </Text>
-                <Text color={textColor} fontSize="xs" opacity={0.9}>
+                <Text 
+                  color={textColor} 
+                  fontSize={{ base: "11px", sm: "12px", md: "14px" }}
+                  fontWeight="medium"
+                  opacity={0.9}
+                  lineHeight="1.4"
+                  mt={1}
+                >
                   {item.label}
                 </Text>
               </Box>
             ))}
-          </Flex>
+          </SimpleGrid>
 
           {/* Button - premium style */}
           <Button
-            size="lg"
+            size={{ base: "md", sm: "lg" }}
             bg={buttonBg}
             color={buttonColor}
-            px={6}
+            px={{ base: 8, md: 10 }}
+            py={{ base: 6, md: 7 }}
             borderRadius="full"
             fontWeight="bold"
-            mt={3}
+            fontSize={{ base: "16px", md: "18px" }}
+            mt={{ base: 4, md: 6 }}
             boxShadow="lg"
-            ml={{ base: 0, md: 14 }}
+            width={{ base: "100%", sm: "auto" }}
+            minW={{ sm: "200px" }}
             sx={{
               animation: "bounceIn 0.8s ease-out 1.2s both",
               "@keyframes bounceIn": {
@@ -288,14 +298,31 @@ const CTA = () => {
               },
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               _hover: {
-                transform: "scale(1.08) translateY(-3px)",
+                transform: { base: "scale(1.02)", md: "scale(1.08) translateY(-3px)" },
                 boxShadow: "2xl",
                 bg: hoverBg,
               },
             }}
           >
-            Sign Up →
+            Sign Up Now →
           </Button>
+
+          {/* Trust indicator */}
+          <Text
+            color={textColor}
+            fontSize={{ base: "12px", sm: "13px" }}
+            opacity={0.7}
+            mt={2}
+            sx={{
+              animation: "fadeIn 0.6s ease-out 1.5s both",
+              "@keyframes fadeIn": {
+                "0%": { opacity: 0 },
+                "100%": { opacity: 0.7 },
+              },
+            }}
+          >
+            ✨ Free to join • No credit card required
+          </Text>
         </VStack>
       </Flex>
     </Box>
