@@ -38,23 +38,23 @@ const FeatureCard = ({ icon: IconComponent, title, description }) => {
       }}
     >
       <VStack align="start" spacing={{ base: 4, md: 3 }} height="100%">
-        <HStack spacing={3} width="full">
+        <HStack spacing={3} width="full" alignItems="center">
           <Box
             p={2.5}
             bg={iconBg}
             borderRadius="lg"
             color="pink.500"
             transition="0.2s"
-            _groupHover={{ transform: "scale(1.1)" }}
+            flexShrink={0}
           >
             <Icon as={IconComponent} boxSize={{ base: 5, md: 5 }} />
           </Box>
           <Heading 
             size={{ base: "sm", md: "sm" }} 
             fontWeight="semibold" 
-            noOfLines={2}
-            fontSize={{ base: "16px", md: "18px" }}
+            fontSize={{ base: "15px", md: "18px" }}
             lineHeight="1.4"
+            flex={1}
           >
             {title}
           </Heading>
@@ -62,7 +62,7 @@ const FeatureCard = ({ icon: IconComponent, title, description }) => {
 
         <Text 
           color={textColor} 
-          fontSize={{ base: "14px", md: "15px" }}
+          fontSize={{ base: "13px", md: "15px" }}
           lineHeight="1.5"
           noOfLines={{ base: 3, md: 2 }}
           flex="1"
@@ -77,7 +77,7 @@ const FeatureCard = ({ icon: IconComponent, title, description }) => {
           px={0} 
           height="auto" 
           py={2}
-          fontSize={{ base: "13px", md: "14px" }}
+          fontSize={{ base: "12px", md: "14px" }}
           fontWeight="medium"
           _hover={{ transform: "translateX(4px)" }}
           transition="0.2s"
@@ -160,6 +160,7 @@ const FeaturesSlider = () => {
           arrows: false,
           centerMode: true,
           centerPadding: "20px",
+          dots: true,
         },
       },
     ],
@@ -168,8 +169,8 @@ const FeaturesSlider = () => {
   return (
     <Box
       id="features"
-      py={{ base: 16, md: 20 }}
-      px={{ base: 4, md: 8 }}
+      py={{ base: 12, md: 20 }}
+      px={{ base: 3, md: 8 }}
       bg={sectionBg}
       sx={{
         ".slick-prev, .slick-next": {
@@ -179,7 +180,8 @@ const FeaturesSlider = () => {
           borderRadius: "full",
           bg: useColorModeValue("white", "gray.800"),
           boxShadow: "md",
-          _hover: {
+          display: { base: "none", md: "flex" },
+          "&:hover": {
             bg: useColorModeValue("gray.50", "gray.700"),
           },
         },
@@ -195,7 +197,7 @@ const FeaturesSlider = () => {
           opacity: 1,
         },
         ".slick-dots": {
-          bottom: "-30px",
+          bottom: "-35px",
           "li button:before": {
             fontSize: "10px",
             color: "#795481",
@@ -206,21 +208,32 @@ const FeaturesSlider = () => {
             color: "#795481",
           },
         },
+        ".slick-track": {
+          display: "flex",
+          alignItems: "stretch",
+        },
+        ".slick-slide": {
+          height: "auto",
+          "& > div": {
+            height: "100%",
+          },
+        },
       }}
     >
-      <VStack spacing={4} mb={{ base: 12, md: 16 }} textAlign="center">
+      <VStack spacing={4} mb={{ base: 8, md: 16 }} textAlign="center">
         <Heading
-          fontSize={{ base: "32px", md: "40px", lg: "48px" }}
+          fontSize={{ base: "28px", md: "40px", lg: "48px" }}
           fontWeight="bold"
           bgGradient="linear(to-r, pink.500, purple.500)"
           bgClip="text"
           lineHeight="1.2"
           letterSpacing="tight"
+          px={{ base: 2, md: 0 }}
         >
           Explore Features 💖
         </Heading>
         <Text 
-          fontSize={{ base: "16px", md: "18px" }}
+          fontSize={{ base: "15px", md: "18px" }}
           color={textColor}
           maxW="2xl"
           lineHeight="1.6"
@@ -231,10 +244,10 @@ const FeaturesSlider = () => {
         </Text>
       </VStack>
       
-      <Box maxW="1280px" mx="auto" px={{ base: 2, md: 4 }}>
+      <Box maxW="1280px" mx="auto" px={{ base: 1, md: 4 }}>
         <Slider {...settings}>
           {featuresData.map((feature, index) => (
-            <Box key={index} px={{ base: 1, md: 1 }}>
+            <Box key={index} px={{ base: 1, md: 1 }} height="100%">
               <FeatureCard {...feature} />
             </Box>
           ))}
