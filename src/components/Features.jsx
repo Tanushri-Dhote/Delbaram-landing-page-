@@ -128,39 +128,48 @@ const FeaturesSlider = () => {
   ];
 
   const settings = {
+    mobileFirst: true,
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 1, // Default to 1 slide for mobile
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    arrows: true,
+    arrows: false, // Hide arrows on mobile by default
+    centerMode: true,
+    centerPadding: "20px",
     responsive: [
       {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
+        breakpoint: 480, // min-width: 480px
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: true,
-          centerPadding: "20px",
-          dots: true,
+          centerPadding: "40px",
+        },
+      },
+      {
+        breakpoint: 768, // min-width: 768px
+        settings: {
+          slidesToShow: 2,
+          centerMode: false,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 1024, // min-width: 1024px
+        settings: {
+          slidesToShow: 3,
+          centerMode: false,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 1280, // min-width: 1280px
+        settings: {
+          slidesToShow: 4,
+          centerMode: false,
+          arrows: true,
         },
       },
     ],
