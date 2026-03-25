@@ -205,12 +205,12 @@ const Contact = () => {
             />
             
             <Flex
-              direction={{ base: "column", lg: "row" }}
+              direction="column"
               gap={8}
             >
               {/* Left Side - Email Info */}
               <Box
-                flex={1}
+                flex="1"
                 bg={useColorModeValue("pink.50", "gray.700")}
                 p={{ base: 8, md: 10 }}
                 textAlign="center"
@@ -275,8 +275,8 @@ const Contact = () => {
                 </Text>
               </Box>
 
-              {/* Right Side - Contact Form */}
-              <Box flex={1.5} p={{ base: 6, md: 8 }}>
+              {/* Right Side - Contact Form - COMMENTED OUT */}
+              {/* <Box flex={1.5} p={{ base: 6, md: 8 }}>
                 <VStack align="flex-start" spacing={6}>
                   <Box>
                     <Heading 
@@ -416,7 +416,7 @@ const Contact = () => {
                     </VStack>
                   </form>
                 </VStack>
-              </Box>
+              </Box> */}
             </Flex>
           </Box>
         </ScaleFade>
